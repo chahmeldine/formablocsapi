@@ -1,0 +1,29 @@
+{
+  "name": "formablocs",
+  "version": "1.0.0",
+  "description": "formabloc backend",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "start:dev": "nodemon api/server.js",
+    "test": "node api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chahmeldine/formatblocs.git"
+  },
+  "author": "chérif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chahmeldine/formatblocs/issues"
+  },
+  "homepage": "https://github.com/chahmeldine/formatblocs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "emailjs-com": "^3.2.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "stripe": "^8.176.0"
+  }
+}
