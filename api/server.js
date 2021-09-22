@@ -8,7 +8,12 @@ const cors = require("cors");
 app.use(express.static("public"));
 const server = http.createServer(app);
 const bodyParser = require("body-parser");
-app.use(cors());
+const corsOptions = {
+  origin: "https://https://formablocs.fr",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 // create application/json parser
 bodyParser.json();
 // create application/x-www-form-urlencoded parser
@@ -32,12 +37,7 @@ app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
-var corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-app.post("/create-checkout-session", cors(corsOptions), async (req, res) => {
+app.post("/create-checkout-session", async (req, res) => {
   const { articles } = req.body;
   // Items transformed to send into session stripe.
   const transformedItems = articles.map((item) => {
