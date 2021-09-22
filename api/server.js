@@ -13,6 +13,7 @@ app.use(cors());
 bodyParser.json();
 // create application/x-www-form-urlencoded parser
 bodyParser.urlencoded({ extended: false });
+require("dotenv").config();
 
 app.use(bodyParser());
 app.use(function (req, res, next) {
@@ -23,7 +24,7 @@ app.use(function (req, res, next) {
   );
   next();
 });
-const PORT = 4000;
+const PORT = process.env.PORT || 5000;
 const DOMAIN = `http://localhost:${PORT}`;
 const FRONT = "https://formablocs.fr";
 
@@ -96,8 +97,8 @@ app.post(
   }
 );
 
-server.listen(() => {
-  console.log(`listening on web`);
+server.listen(PORT, () => {
+  console.log(`listening on web ${PORT}`);
 });
 
 module.exports = app;
