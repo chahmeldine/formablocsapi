@@ -9,7 +9,7 @@ app.use(express.static("public"));
 const server = http.createServer(app);
 const bodyParser = require("body-parser");
 const corsOptions = {
-  origin: "https://https://formablocs.fr",
+  origin: "https://formablocs.fr",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
