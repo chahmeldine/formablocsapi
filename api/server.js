@@ -96,8 +96,8 @@ app.post(
   }
 );
 
-server.listen(PORT, () => {
+/*server.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
-});
+});*/
 
 module.exports = app;
