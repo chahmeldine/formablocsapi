@@ -96,8 +96,8 @@ app.post(
   }
 );
 
-app.listen(4242, () => console.log("Running on port 4242"));
-
 server.listen(PORT, () => {
-  console.log(`listening on ${DOMAIN}`);
+  console.log(`listening on ${PORT}`);
 });
+
+module.exports = app;
