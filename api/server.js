@@ -8,12 +8,24 @@ const cors = require("cors");
 app.use(express.static("public"));
 const server = http.createServer(app);
 const bodyParser = require("body-parser");
-const corsOptions = {
-  origin: "https://formablocs.fr",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://formablocs.fr"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  next();
+});
+app.use(
+  cors({
+    origin: "https://formablocs.fr",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+  })
+);
 // create application/json parser
 bodyParser.json();
 // create application/x-www-form-urlencoded parser
@@ -21,14 +33,6 @@ bodyParser.urlencoded({ extended: false });
 require("dotenv").config();
 
 app.use(bodyParser());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 const PORT = process.env.PORT || 5000;
 const DOMAIN = `http://localhost:${PORT}`;
 const FRONT = "https://formablocs.fr";
